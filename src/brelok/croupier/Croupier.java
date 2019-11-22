@@ -10,43 +10,45 @@ public class Croupier {
     private static int violet = 30;
     private static int blue = 50;
 
-    private static final int boundGift = 101;
-    private static final int boundItem = 10;
+    private static final int boundGift = 100;
+    private static final int boundItem = 9;
 
     public static void main(String[] args) {
 
-        Random randomGift = new Random();
+        Random random = new Random();
+        int randomGift = random.nextInt(boundGift) + 1; //bounds from 1 to 100
 
         int drawnColorGift = 0;
 
-        if (randomGift.nextInt(boundGift) + 1 == 1 && randomGift.nextInt(boundGift) + 1 == 2) {
+        if (randomGift == 1 || randomGift == 2) {
             drawnColorGift = gold;
-        } else if (randomGift.nextInt(boundGift) + 1 >= 3 && randomGift.nextInt(boundGift) + 1 <= 8) {
+        } else if (randomGift >= 3 && randomGift <= 8) {
             drawnColorGift = red;
-        } else if (randomGift.nextInt(boundGift) + 1 >= 9 && randomGift.nextInt(boundGift) + 1 <= 20) {
+        } else if (randomGift >= 9 && randomGift <= 20) {
             drawnColorGift = pink;
-        } else if (randomGift.nextInt(boundGift) + 1 >= 21 && randomGift.nextInt(boundGift) + 1 <= 50) {
+        } else if (randomGift >= 21 && randomGift <= 50) {
             drawnColorGift = violet;
         } else {
             drawnColorGift = blue;
         }
 
-        Random randomItem = new Random();
+
+        int randomItem = random.nextInt(boundItem) + 1; //bounds from 1 to 10
 
         if (drawnColorGift == 2) {
-            GoldItems goldItems = new GoldItems(randomItem.nextInt(boundItem) + 1);
+            GoldItems goldItems = new GoldItems(randomItem);
             System.out.println("In gold present you won item number " + goldItems.getNumber());
         } else if (drawnColorGift == 6) {
-            RedItems redItems = new RedItems(randomItem.nextInt(boundItem) + 1);
+            RedItems redItems = new RedItems(randomItem);
             System.out.println("In red present you won item number " + redItems.getNumber());
         } else if (drawnColorGift == 12) {
-            PinkItems pinkItems = new PinkItems(randomItem.nextInt(boundItem) + 1);
+            PinkItems pinkItems = new PinkItems(randomItem);
             System.out.println("In pink present you won item number " + pinkItems.getNumber());
-        } else if (drawnColorGift == 12) {
-            VioletItems violetItems = new VioletItems(randomItem.nextInt(boundItem) + 1);
+        } else if (drawnColorGift == 30) {
+            VioletItems violetItems = new VioletItems(randomItem);
             System.out.println("In violet present you won item number " + violetItems.getNumber());
         } else {
-            BlueItems blueItems = new BlueItems(randomItem.nextInt(boundItem) + 1);
+            BlueItems blueItems = new BlueItems(randomItem);
             System.out.println("In blue present you won item number " + blueItems.getNumber());
         }
     }
