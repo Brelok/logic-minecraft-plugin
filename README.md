@@ -1,1 +1,1 @@
-test
+Zadania testowe dotyczące pluginów w minecrafcie.
